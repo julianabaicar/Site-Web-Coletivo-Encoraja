@@ -73,10 +73,3 @@ $event_controller->editEvent(2, $new_event);
 $event_controller->listEvents();
 
 echo '=========================================================';
-
-
-
-
-
-
-

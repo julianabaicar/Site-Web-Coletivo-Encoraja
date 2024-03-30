@@ -50,7 +50,9 @@ class Administrator extends User
     public function editUser()
     {
     }
-    // public function viewReport(){}
+    public function viewReport(){
+        
+    }
     public function viewInscriptions()
     {
         $inscription = new InscriptionController();

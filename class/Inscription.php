@@ -2,7 +2,7 @@
 
 class Inscription  {
     private Event $event;
-    private Student $student;
+    private BeneficiaryStudent $student;
     private $status;
     private $proof;
 
@@ -19,11 +19,11 @@ class Inscription  {
     {
         $this->event = $event;
     }
-    public function getStudent(): Student
+    public function getStudent(): BeneficiaryStudent
     {
         return $this->student;
     }
-    public function setStudent(Student $student): void
+    public function setStudent(BeneficiaryStudent $student): void
     {
         $this->student = $student;
     }

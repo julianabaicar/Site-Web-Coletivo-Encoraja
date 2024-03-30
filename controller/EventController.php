@@ -26,7 +26,7 @@ class EventController
     {
         if (isset($this->events[$id])) {
             $existing_event = $this->events[$id];
-    
+            
             $existing_event->setName($new_event->getName() ?? $existing_event->getName());
             $existing_event->setDescription($new_event->getDescription() ?? $existing_event->getDescription());
             $existing_event->setDate($new_event->getDate() ?? $existing_event->getDate());
