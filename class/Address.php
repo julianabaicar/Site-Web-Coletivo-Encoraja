@@ -1,5 +1,5 @@
 <?php
-require_once 'users.php';
+// require_once 'users.php';
 class Address{
     private int $number, $zip_code;
     private string $street, $city,$neighborhoods;
@@ -46,7 +46,7 @@ class Address{
         $this->zip_code = $zip_code;
     }
 
-    public function getNeighborhoods(): int
+    public function getNeighborhoods(): string
     {
         return $this->neighborhoods;
     }
@@ -85,9 +85,4 @@ class Address{
     {
         $this->user = $user;
     }
-
-
-
-
-
 }

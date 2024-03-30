@@ -1,122 +1,149 @@
 <?php
 
-interface EventosList
-{
-    public function listarEventos();
+abstract class EventModality {
+    const PRESENTIAL = 'presential';
+    const HYBRID = 'hybrid';
+    const REMOTE = 'remote';
 }
 
-class Evento {
-    private int $id_evento, $qtde_vagas;
-    private string $data_hora, $descricao, $nome, $modalidade, $tipo, $publico_alvo, $material, $area_interesse;
-    private bool $status;
+abstract class EventType {
+    const COURSE = 'course';
+    const WORKSHOP = 'workshop';
+    const LECTURE = 'lecture';
+}
 
-    public function cadastrarEvento(){}
-    public function excluirEvento(){}
-    public function editarEvento(){}
-    public function gerarAgendaEventos(){}
-    public function listarEventos(){}
-    public function listarAlunos(){}
+abstract class EventStatus {
+    const ACTIVE = 'active';
+    const INACTIVE = 'inactive';
+    const PENDING = 'pending';
+}
 
-    public function getQtdeVagas(): int
-    {
-        return $this->qtde_vagas;
-    }
+class Event {
+    private $id;
+    private $name;
+    private $description;
+    private $date;
+    private $time;
+    private $location;
+    private $modality;
+    private $status;
+    private $type;
+    private $target_audience;
+    private $vacancies;
+    private $social_vacancies;
+    private $regular_vacancies;
+    private $material;
+    private $interest_area;    
 
-    public function setQtdeVagas(int $qtde_vagas): void
-    {
-        $this->qtde_vagas = $qtde_vagas;
-    }
-
-    public function getDataHora(): string
-    {
-        return $this->data_hora;
-    }
-
-    public function setDataHora(string $data_hora): void
-    {
-        $this->data_hora = $data_hora;
-    }
-
-    public function getDescricao(): string
-    {
-        return $this->descricao;
-    }
-
-    public function setDescricao(string $descricao): void
-    {
-        $this->descricao = $descricao;
-    }
-
-    public function getNome(): string
-    {
-        return $this->nome;
-    }
-
-    public function setNome(string $nome): void
-    {
-        $this->nome = $nome;
-    }
-
-    public function getModalidade(): string
-    {
-        return $this->modalidade;
-    }
-
-    public function setModalidade(string $modalidade): void
-    {
-        $this->modalidade = $modalidade;
-    }
-
-    public function getTipo(): string
-    {
-        return $this->tipo;
-    }
-
-    public function setTipo(string $tipo): void
-    {
-        $this->tipo = $tipo;
-    }
-
-    public function getPublicoAlvo(): string
-    {
-        return $this->publico_alvo;
-    }
-
-    public function setPublicoAlvo(string $publico_alvo): void
-    {
-        $this->publico_alvo = $publico_alvo;
-    }
-
-    public function getMaterial(): string
-    {
-        return $this->material;
-    }
-
-    public function setMaterial(string $material): void
-    {
+    public function __construct(
+        $id = null, $name = null, $description = null, $date = null, $time = null, $location = null, $modality = null, 
+        $status = null, $type = null, $target_audience = null, $vacancies = null, $social_vacancies = null, 
+        $regular_vacancies = null, $material = null, $interest_area = null) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->description = $description;
+        $this->date = $date;
+        $this->time = $time;
+        $this->location = $location;
+        $this->modality = $modality;
+        $this->status = $status;
+        $this->type = $type;
+        $this->target_audience = $target_audience;
+        $this->vacancies = $vacancies;
+        $this->social_vacancies = $social_vacancies;
+        $this->regular_vacancies = $regular_vacancies;
         $this->material = $material;
+        $this->interest_area = $interest_area;
     }
 
-    public function getAreaInteresse(): string
-    {
-        return $this->area_interesse;
+    public function getId() {
+        return $this->id;
     }
-
-    public function setAreaInteresse(string $area_interesse): void
-    {
-        $this->area_interesse = $area_interesse;
+    public function getName() {
+        return $this->name;
     }
-
-    public function isStatus(): bool
-    {
+    public function getDescription() {
+        return $this->description;
+    }
+    public function getDate() {
+        return $this->date;
+    }
+    public function getTime() {
+        return $this->time;
+    }
+    public function getLocation() {
+        return $this->location;
+    }
+    public function getModality() {
+        return $this->modality;
+    }
+    public function getStatus() {
         return $this->status;
     }
-
-    public function setStatus(bool $status): void
-    {
+    public function getType() {
+        return $this->type;
+    }
+    public function getTargetAudience() {
+        return $this->target_audience;
+    }
+    public function getVacancies() {
+        return $this->vacancies;
+    }
+    public function getSocialVacancies() {
+        return $this->social_vacancies;
+    }
+    public function getRegularVacancies() {
+        return $this->regular_vacancies;
+    }
+    public function getMaterial() {
+        return $this->material;
+    }
+    public function getInterestArea() {
+        return $this->interest_area;
+    }
+    public function setId($id) {
+        $this->id = $id;
+    }
+    public function setName($name) {
+        $this->name = $name;
+    }
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+    public function setDate($date) {
+        $this->date = $date;
+    }
+    public function setTime($time) {
+        $this->time = $time;
+    }
+    public function setLocation($location) {
+        $this->location = $location;
+    }
+    public function setModality($modality) {
+        $this->modality = $modality;
+    }
+    public function setStatus($status) {
         $this->status = $status;
     }
-
-
-
+    public function setType($type) {
+        $this->type = $type;
+    }
+    public function setTargetAudience($target_audience) {
+        $this->target_audience = $target_audience;
+    }
+    public function setVacancies($vacancies) {
+        $this->vacancies = $vacancies;
+    }
+    public function setSocialVacancies($social_vacancies) {
+        $this->social_vacancies = $social_vacancies;
+    }
+    public function setRegularVacancies($regular_vacancies) {
+        $this->regular_vacancies = $regular_vacancies;
+    }
+    public function setMaterial($material) {
+        $this->material = $material;
+    }
+    public function setInterestArea($interest_area) {
+        $this->interest_area = $interest_area;
+    }
 }
