@@ -6,6 +6,7 @@ require_once("../class/Event.php");
 require_once("../controller/EventController.php");
 require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
+require_once("../class/BeneficiaryStudent.php");
 
 // $administrator = new Administrator(
 //     1,               
@@ -48,6 +49,7 @@ require_once("../controller/InscriptionController.php");
 // $event_controller->registerEvent($event1);
 // $administrator->rejectEvent($event1);
 
+
 // Criando um administrador
 $administrator = new Administrator(
     1,
@@ -61,68 +63,39 @@ $administrator = new Administrator(
     "john@email.com"
 );
 
-// Testando a função de aceitar um evento
-$event1 = new Event();
-$event1->setId(1);
-$event1->setName('Curso de Costura');
-$event1->setDescription('Curso para aprender a costurar');
-$event1->setDate('2024-03-31');
-$event1->setTime('10:30:00');
-$event1->setLocation('Passeio Publico');
-$event1->setModality(EventModality::PRESENTIAL);
-$event1->setStatus(EventStatus::PENDING);
-$event1->setType(EventType::COURSE);
-$event1->setTargetAudience('Mulheres');
-$event1->setVacancies(15);
-$event1->setSocialVacancies(4);
-$event1->setRegularVacancies(11);
-$event1->setMaterial('Tesouras');
-$event1->setInterestArea('Costura');
+// Criando um evento
+$event = new Event();
+$event->setId(1);
+$event->setName('Curso de Costura');
+$event->setDescription('Curso para aprender a costurar');
+$event->setDate('2024-03-31');
+$event->setTime('10:30:00');
+$event->setLocation('Passeio Publico');
+$event->setModality(EventModality::PRESENTIAL);
+$event->setStatus(EventStatus::PENDING);
+$event->setType(EventType::COURSE);
+$event->setTargetAudience('Mulheres');
+$event->setVacancies(15);
+$event->setSocialVacancies(4);
+$event->setRegularVacancies(11);
+$event->setMaterial('Tesouras');
+$event->setInterestArea('Costura');
 
-$administrator->acceptEvent($event1);
+// Criando um aluno
+$student = new BeneficiaryStudent();
+$student->setId(1);
+$student->setName('Maria Silva');
+// Adicione outros detalhes do aluno aqui
 
-// Testando a função de rejeitar um evento
-$event2 = new Event();
-$event2->setId(2);
-$event2->setName('Palestra de Saúde Mental');
-$event2->setDescription('Palestra sobre a importância da saúde mental');
-$event2->setDate('2024-04-10');
-$event2->setTime('14:00:00');
-$event2->setLocation('Online');
-$event2->setModality(EventModality::REMOTE);
-$event2->setStatus(EventStatus::PENDING);
-$event2->setType(EventType::LECTURE);
-$event2->setTargetAudience('Público geral');
-$event2->setVacancies(50);
-$event2->setSocialVacancies(10);
-$event2->setRegularVacancies(40);
-$event2->setMaterial('Computador');
-$event2->setInterestArea('Saúde');
-
-$administrator->rejectEvent($event2);
-
-// Testando a função de criar um evento
-$newEventData = array(
-    'id' => 3,
-    'name' => 'Workshop de Marketing Digital',
-    // Adicione os outros campos do evento aqui
-);
-
-$administrator->createEvent($newEventData);
-
-// Testando a função de editar um evento
-$administrator->editEvent(3, array('name' => 'Workshop de Marketing'));
-
-// Testando a função de listar eventos
-$administrator->eventList();
-
-// Testando a função de visualizar inscrições
-$administrator->viewInscriptions();
+// Criando uma inscrição com o aluno e o evento específicos
+$inscription = new Inscription($event, $student);
 
 // Testando a função de aceitar inscrições
-$inscription = new Inscription();
-// Preencha os detalhes da inscrição aqui
+echo "Aceitando a inscrição:" . PHP_EOL;
 $administrator->acceptInscriptions($inscription);
+echo "Status da inscrição após aceitar: " . $inscription->getStatus() . PHP_EOL;
 
 // Testando a função de rejeitar inscrições
+echo "Rejeitando a inscrição:" . PHP_EOL;
 $administrator->rejectInscriptions($inscription);
+echo "Status da inscrição após rejeitar: " . $inscription->getStatus() . PHP_EOL;
