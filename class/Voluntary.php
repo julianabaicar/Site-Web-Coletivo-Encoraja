@@ -1,4 +1,5 @@
 <?php
+require_once "Event.php";
 class Voluntary extends User
 {
     private int $id;
@@ -14,8 +15,10 @@ class Voluntary extends User
     }
 
 
-    public function sugerirEventos()
+    public function sugerirEventos($event_sugester)
     {
+        $event = new EventController();
+        $event->registerEvent($event_sugester);
 
     }
     public function visualizarInscricao()
