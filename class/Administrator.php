@@ -1,30 +1,30 @@
 <?php
 
-class Administrator extends User implements Interface_user 
+class Administrator extends User implements Interface_user
 {
     private $id;
 
-    public function __construct($id = null, $name = null, $password = null, $email = null, $birthday = null, $type = null, $image_agreement = null, $data_agreement = null)
+    public function __construct($id = null, $name = null, $password = null, $date_of_birth = null, $cpf = null, $user_type = null, $image_term = null, $data_use_term = null, $email = null)
     {
-        parent::__construct($id, $name, $password, $email, $birthday, $type, $image_agreement, $data_agreement);
+        parent::__construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email);
         $this->id = $id;
     }
-    public function acceptEvent($idEvent)
+    public function acceptEvent(Event $event)
     {
-        $newEvent = new Event();
-        $newEvent->setStatus(EventStatus::ACTIVE);
+        $event->setStatus(EventStatus::ACTIVE);
 
         $events = new EventController();
-        $events->editEvent($idEvent, $newEvent);
+        $events->editEvent($event->getId(), $event);
     }
-    public function rejectEvent($idEvent)
+
+    public function rejectEvent(Event $event)
     {
-        $newEvent = new Event();
-        $newEvent->setStatus(EventStatus::INACTIVE);
+        $event->setStatus(EventStatus::INACTIVE);
 
         $events = new EventController();
-        $events->editEvent($idEvent, $newEvent);
+        $events->editEvent($event->getId(), $event);
     }
+
     public function createEvent(array $data)
     {
         $event = new Event();
@@ -48,27 +48,30 @@ class Administrator extends User implements Interface_user
     }
 
     // MÉTODOS QUE ESPERAREMOS O BANCO, MAS FUNCIONARIAM COMO O CONTROLLER DE EVENT OU INSCRIPTION
-    public function registerUser()
-    {
-    }
-    public function deleteUser()
-    {
-    }
-    public function editUser()
-    {
-    }
-    public function viewReport(){
-        //GERAÇÃO DE RELATÓRIO
-    }
+    // public function registerUser()
+    // {
+    // }
+    // public function deleteUser()
+    // {
+    // }
+    // public function editUser()
+    // {
+    // }
+    // public function viewReport()
+    // {
+    //     //GERAÇÃO DE RELATÓRIO
+    // }
     public function viewInscriptions()
     {
         $inscription = new InscriptionController();
         $inscription->viewInscriptions();
     }
-    public function acceptInscriptions(Event $event)
+    public function acceptInscriptions(Inscription $inscription)
     {
+        $inscription->setStatus(EventStatus::ACTIVE);
     }
-    public function rejectInscriptions()
+    public function rejectInscriptions(Inscription $inscription)
     {
+        $inscription->setStatus(EventStatus::INACTIVE);
     }
 }

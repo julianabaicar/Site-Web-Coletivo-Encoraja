@@ -47,7 +47,6 @@ class EventController
         }
         return false;
     }
-
     public function listEvents()
     {
         foreach ($this->events as $event) {
