@@ -15,13 +15,13 @@ class Voluntary extends User
     }
 
 
-    public function sugerirEventos($event_sugester)
+    public function suggestEvent($suggest_event)
     {
         $event = new EventController();
-        $event->registerEvent($event_sugester);
+        $event->registerEvent($suggest_event);
 
     }
-    public function visualizarInscricao()
+    public function viewInscription()
     {
 
     }
