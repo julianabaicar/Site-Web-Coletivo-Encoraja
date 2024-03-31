@@ -1,6 +1,6 @@
 <?php
 
-class Administrator extends User
+class Administrator extends User implements Interface_user 
 {
     private $id;
 
@@ -41,6 +41,10 @@ class Administrator extends User
         $events = new EventController();
         $events->editEvent($id, $newEvent);
     }
+    public function listEvent(array $data)
+    {
+    }
+
     public function registerUser()
     {
     }
