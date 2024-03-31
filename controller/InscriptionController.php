@@ -40,16 +40,27 @@ class InscriptionController
         if (empty($this->inscriptions)) {
             return "Não há inscrições registradas.";
         }
-    
+
         $inscriptionDetails = "";
-    
+
         foreach ($this->inscription as $inscription) {
             $student = $inscription->getStudent();
             $event = $inscription->getEvent();
             $status = $inscription->getStatus();
-    
+
             $inscriptionDetails .= "Aluno: " . $student->getName() . ", Evento: " . $event->getName() . ", Status: " . $status . "\n";
         }
         return $inscriptionDetails;
+    }
+    public function findInscriptionsByStudentId($studentId)
+    {
+        $matchingInscriptions = [];
+
+        foreach ($this->inscription as $inscription) {
+            if ($inscription->getStudent()->getId() === $studentId) {
+                $matchingInscriptions[] = $inscription;
+            }
+        }
+        return $matchingInscriptions;
     }
 }

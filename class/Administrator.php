@@ -41,10 +41,13 @@ class Administrator extends User implements Interface_user
         $events = new EventController();
         $events->editEvent($id, $newEvent);
     }
-    public function listEvent(array $data)
+    public function eventList()
     {
+        $event = new EventController();
+        $event->listEvents();
     }
 
+    // MÉTODOS QUE ESPERAREMOS O BANCO, MAS FUNCIONARIAM COMO O CONTROLLER DE EVENT OU INSCRIPTION
     public function registerUser()
     {
     }
@@ -55,7 +58,7 @@ class Administrator extends User implements Interface_user
     {
     }
     public function viewReport(){
-        
+        //GERAÇÃO DE RELATÓRIO
     }
     public function viewInscriptions()
     {

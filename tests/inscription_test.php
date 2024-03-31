@@ -80,6 +80,7 @@ foreach ($inscricoesEvento1 as $inscricao) {
     echo "- Aluno: " . $inscricao->getStudent()->getName() . ", Status: " . $inscricao->getStatus() . "\n";
 }
 
+print_r($inscriptionController->findInscriptionsByStudentId(50));
 // Testando a visualização de todas as inscrições
 die();
 echo "Todas as inscrições:\n";

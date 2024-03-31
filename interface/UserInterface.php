@@ -2,8 +2,8 @@
 
     interface Interface_user
     {
-      public function RegisterUser();
-      public function EventList();
+      public function registerUser();
+      public function eventList();
 
     }
 

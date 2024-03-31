@@ -27,8 +27,8 @@
             $this->email = $email;
         }
 
-        public function RegisterUser(){}
-        public function EventList(){}
+        public function registerUser(){}
+        public function eventList(){}
 
         public function getId(): int
         {
