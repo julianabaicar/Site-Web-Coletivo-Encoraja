@@ -1,13 +1,14 @@
 <?php
 require_once "Event.php";
-class Voluntary extends User
+require_once "User.php";
+class Voluntary extends User implements Interface_user
 {
     private int $id;
     private string $availability, $course_experience, $how_did_know, $expectations;
 
-    public function __construct(int $cpf = null, int $password = null, string $name = null, string $email= null, string $ft_nasc= null, string $type= null, bool $term_image= null, bool $term_data= null, string $availability= null, string $course_experience= null, string $how_did_know= null, string $expectations= null)
+    public function __construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email, string $availability, string $course_experience, string $how_did_know, string $expectations)
     {
-        parent::__construct($cpf, $password, $name, $email, $ft_nasc, $type, $term_image, $term_data);
+        parent::__construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email);
         $this->availability = $availability;
         $this->course_experience = $course_experience;
         $this->how_did_know = $how_did_know;
