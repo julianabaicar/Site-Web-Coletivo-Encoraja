@@ -82,9 +82,8 @@ $event->setMaterial('Tesouras');
 $event->setInterestArea('Costura');
 
 // Criando um aluno
-$student = new BeneficiaryStudent();
-$student->setId(1);
-$student->setName('Maria Silva');
+$student = new BeneficiaryStudent(1, 'Maria Silva');
+
 // Adicione outros detalhes do aluno aqui
 
 // Criando uma inscrição com o aluno e o evento específicos

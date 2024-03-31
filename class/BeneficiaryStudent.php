@@ -33,10 +33,6 @@ class BeneficiaryStudent extends User implements Interface_user
         $inscription_controller = new InscriptionController();
         $inscription_controller->findInscriptionsByStudentId($this->id);
     }
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
     public function setId(int $id): void
     {

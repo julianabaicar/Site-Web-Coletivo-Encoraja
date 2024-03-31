@@ -6,7 +6,6 @@ require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
 require_once("../class/BeneficiaryStudent.php");
 
-
 $event1 = new Event();
 $event1->setId(3);
 $event1->setName('Curso de Costura');

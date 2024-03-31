@@ -1,5 +1,5 @@
 <?php
-
+require_once "User.php";
 class Administrator extends User implements Interface_user
 {
     private $id;
