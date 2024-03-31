@@ -1,6 +1,5 @@
 <?php
 
-require_once("../class/User.php");
 require_once("../class/Administrator.php");
 require_once("../class/Event.php");
 require_once("../controller/EventController.php");
@@ -88,13 +87,35 @@ $student = new BeneficiaryStudent(1, 'Maria Silva');
 
 // Criando uma inscrição com o aluno e o evento específicos
 $inscription = new Inscription($event, $student);
+print_r($inscription);
 
 // Testando a função de aceitar inscrições
-echo "Aceitando a inscrição:" . PHP_EOL;
 $administrator->acceptInscriptions($inscription);
-echo "Status da inscrição após aceitar: " . $inscription->getStatus() . PHP_EOL;
+print_r($inscription);
+
 
 // Testando a função de rejeitar inscrições
-echo "Rejeitando a inscrição:" . PHP_EOL;
 $administrator->rejectInscriptions($inscription);
-echo "Status da inscrição após rejeitar: " . $inscription->getStatus() . PHP_EOL;
+print_r($inscription);
+
+$eventData = [
+    'id' => 1,
+    'name' => 'Evento de Exemplo',
+];
+
+$newEvent = new Event(10, 'Curso de informártica');
+$controller_evento = new EventController();
+$administrator->createEvent($newEvent);
+$administrator->eventList();// listaria se estivessem todos na mesma chamada
+
+$administrator->viewInscriptions(); //funcionaria se tivesse eventos instanciados
+
+
+// aceitando inscrição
+$inscription1 = new Inscription($event, $student);
+$administrator->acceptInscriptions($inscription1);
+print_r($inscription1);
+
+// rejeitando inscrição
+$administrator->rejectInscriptions($inscription1);
+print_r($inscription1);

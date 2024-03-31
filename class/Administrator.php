@@ -25,13 +25,10 @@ class Administrator extends User implements Interface_user
         $events->editEvent($event->getId(), $event);
     }
 
-    public function createEvent(array $data)
+    public function createEvent(Event $suggest_event)
     {
-        $event = new Event();
-        $controller = new EventController;
-
-        $event->setId($data['id']); // resto dos atributos
-        $controller->registerEvent($event);
+        $events = new EventController();
+        $events->registerEvent($suggest_event);
     }
     public function editEvent(int $id, array $data)
     {

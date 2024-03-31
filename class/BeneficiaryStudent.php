@@ -1,10 +1,10 @@
 <?php
-require '../class/User.php';
+require_once '../class/User.php';
 
 class BeneficiaryStudent extends User implements Interface_user
 {
     public int $id;
-    public bool $beneficiary;
+    public $beneficiary;
 
     public function __construct(int $id = null, string $name = null, string $password = null, string $date_of_birth = null, string $cpf = null, string $user_type = null, bool $image_term = null, bool $data_use_term = null, string $email = null, bool $beneficiary = null)
     {

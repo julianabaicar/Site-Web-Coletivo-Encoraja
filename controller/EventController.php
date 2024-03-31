@@ -6,10 +6,11 @@ class EventController
 
     public function __construct(Event $events = null)
     {
-        $this->events = $events;
+        $this->events = $events?? [];
     }
     public function registerEvent(Event $event): void
     {
+        
         $this->events[] = $event;
     }
 
