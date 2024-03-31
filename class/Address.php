@@ -5,7 +5,7 @@ class Address{
     private string $street, $city,$neighborhoods;
     private User $user;
 
-    public function registrerAddress(string $street, int $number, string $neighborhoods, string $city, int $zip_code, User $user)
+    public function registerAddress(string $street, int $number, string $neighborhoods, string $city, int $zip_code, User $user)
     {
         $this->street = $street;
         $this->number = $number;
@@ -14,7 +14,6 @@ class Address{
         $this->zip_code = $zip_code;
         $this->user = $user;
     }
-
 
     public function changeAddress(string $street, int $number, string $neighborhoods, string $city, int $zip_code, User $user)
     {

@@ -37,7 +37,7 @@ class InscriptionController
 
     public function viewInscriptions()
     {
-        if (empty($this->inscriptions)) {
+        if (empty($this->inscription)) {
             return "Não há inscrições registradas.";
         }
 

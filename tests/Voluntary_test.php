@@ -33,7 +33,3 @@ $event2->setInterestArea('Artes Plásticas');
 
 //Cenario: Sugerir evento
 $voluntario->suggestEvent($event2);
-
-
-
-
