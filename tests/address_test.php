@@ -1,7 +1,7 @@
 <?php
 
 require_once 'User.php';
-require_once 'Address.php';
+require_once '../tests/Address.php';
 
 $voluntario = array();
 
@@ -21,6 +21,3 @@ $endereco[2]->registrerAddress("Rua Derosso", 133, "Boqueirão", "Curitiba", 819
 $endereco[0]->changeAddress("Rua Derosso", 133, "Boqueirão", "Curitiba", 81910045, $voluntario[0]);
 
 print_r($endereco[0]);
-
-
-
