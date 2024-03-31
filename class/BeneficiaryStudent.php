@@ -11,18 +11,12 @@
             parent::__construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email);
             $this->beneficiary = $beneficiary;
         }
-    
-
-        public function registerUser()
-        {
-
-        }
 
         public function eventList()
         {
             //eventos deveriam ser filtrados status ativo
-            $eventController = new eventController();
-            $eventController->listEvents();
+            $event_controller = new eventController();
+            $event_controller->listEvents();
         }
 
         //tiramos a metodo escolher e enviar evento, tirar do diagrama
@@ -30,12 +24,13 @@
         public function inscribeEvent(Event $event)
         {
             $inscription= new Inscription($event, $this);
-            $inscriptionController= new InscriptionController();
-            $inscriptionController-> registerInscription($inscription);
+            $inscription_controller= new InscriptionController();
+            $inscription_controller-> registerInscription($inscription);
         }
 
         public function listEventsUser()
         {
-            
+            $inscription_controller= new InscriptionController();
+            $inscription_controller->findInscriptionsByStudentId($this->id);
         }
     }
