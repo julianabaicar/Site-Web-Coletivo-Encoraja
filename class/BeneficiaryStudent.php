@@ -18,27 +18,29 @@
         }
     
 
-        public function RegisterUser(){}
-        public function EventList(){}
+        public function registerUser()
+        {
 
+        }
 
-        public function ChooseEvento()
+        public function eventList()
+        {
+            //eventos deveriam ser filtrados status ativo
+            $eventController = new eventController();
+            $eventController->listEvents();
+        }
+
+        //tiramos a metodo escolher e enviar evento, tirar do diagrama
+
+        public function inscribeEvent(Event $event)
+        {
+            $inscription= new Inscription($event, $this);
+            $inscriptionController= new InscriptionController();
+            $inscriptionController-> registerInscription($inscription);
+        }
+
+        public function listEventsUser()
         {
             
-        }
-
-        public function RegisterEvent()
-        {
-            
-        }
-
-        public function SendEvent()
-        {
-
-        }
-
-        public function ListEvents()
-        {
-
         }
     }
