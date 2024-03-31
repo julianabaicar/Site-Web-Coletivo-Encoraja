@@ -31,7 +31,7 @@ $event2->setRegularVacancies(15);
 $event2->setMaterial('Tintas e pincéis');
 $event2->setInterestArea('Artes Plásticas');
 
-//Cenario 04: Sugerir evento
+//Cenario: Sugerir evento
 $voluntario->suggestEvent($event2);
 
 
