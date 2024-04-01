@@ -3,6 +3,7 @@
 require_once("../class/Event.php");
 require_once("../controller/EventController.php");
 
+// Criando eventos
 $event1 = new Event();
 $event1->setId(3);
 $event1->setName('Curso de Costura');
@@ -54,22 +55,24 @@ $event3->setRegularVacancies(40);
 $event3->setMaterial('Nenhum');
 $event3->setInterestArea('Sustentabilidade');
 
-
+// Guardando os eventos na lista de eventos
 $event_controller = new EventController();
 $event_controller->registerEvent($event1);
 $event_controller->registerEvent($event2);
 $event_controller->registerEvent($event3);
+
+// Listando eventos
 $event_controller->listEvents();
 
 echo '=========================================================';
 
+// Deletando um evento da lista de eventos
 $event_controller->deleteEvent($event1->getId());
 $event_controller->listEvents();
 
 echo '=========================================================';
 
+// Editando evento, passando um novo para substituir
 $new_event = new Event('Evento 2 (Editado)', 'Descrição do Evento 2 (Editado)', '2024-04-02', '11:00:00', 'Local 2 (Editado)', EventModality::HYBRID, EventStatus::PENDING, EventType::WORKSHOP, 'Público 2 (Editado)', 35, 12, 23, 'Material 2 (Editado)', 'Interesse 2 (Editado)');
 $event_controller->editEvent(2, $new_event);
 $event_controller->listEvents();
-
-echo '=========================================================';
