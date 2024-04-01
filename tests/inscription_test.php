@@ -6,6 +6,7 @@ require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
 require_once("../class/BeneficiaryStudent.php");
 
+// Criando novo evento
 $event1 = new Event();
 $event1->setId(3);
 $event1->setName('Curso de Costura');
@@ -23,6 +24,8 @@ $event1->setRegularVacancies(11);
 $event1->setMaterial('Tesouras');
 $event1->setInterestArea('Costura');
 
+
+// Criando alunos
 $student1 = new BeneficiaryStudent(
     1, 
     "João",
@@ -48,7 +51,7 @@ $student2 = new BeneficiaryStudent(
     true
 );
 
-//testantando a criação de inscrição
+// Testantando a criação de inscrição
 $inscription1 = new Inscription($event1, $student1);
 $inscription1->setStatus("Ativa");
 $inscription1->setProof("Prova de inscrição 1");
@@ -70,9 +73,11 @@ if ($cancelado) {
 }
 
 // Testando a listagem de inscrições para um evento
+// Criando inscrição e guardando na lista
 $inscription2 = new Inscription($event1, $student2);
 $inscriptionController->registerInscription($inscription2);
 
+//Filtrando pelo evento desejado e mostrando
 $inscricoesEvento1 = $inscriptionController->listInscription($event1);
 echo "Inscrições para o Evento 2:\n";
 foreach ($inscricoesEvento1 as $inscricao) {
@@ -84,4 +89,3 @@ print_r($inscriptionController->findInscriptionsByStudentId(50));
 // Testando a visualização de todas as inscrições
 echo "Todas as inscrições:\n";
 echo $inscriptionController->viewInscriptions();
-echo 'terminou';
