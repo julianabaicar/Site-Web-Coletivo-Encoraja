@@ -7,47 +7,6 @@ require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
 require_once("../class/BeneficiaryStudent.php");
 
-// $administrator = new Administrator(
-//     1,               
-//     "John Doe",         
-//     "password123",      
-//     "1990-01-01",
-//     "12931623967",     
-//     "admin",            
-//     true,               
-//     true,
-//     "john@email.com"
-// );
-
-
-// $event1 = new Event();
-// $event1->setId(3);
-// $event1->setName('Curso de Costura');
-// $event1->setDescription('Curso para aprender a costurar');
-// $event1->setDate('07/09/2002');
-// $event1->setTime('10:30:00');
-// $event1->setLocation('Passeio Publico');
-// $event1->setModality(EventModality::PRESENTIAL);
-// $event1->setStatus(EventStatus::PENDING);
-// $event1->setType(EventType::COURSE);
-// $event1->setTargetAudience('Mulheres');
-// $event1->setVacancies(15);
-// $event1->setSocialVacancies(4);
-// $event1->setRegularVacancies(11);
-// $event1->setMaterial('Tesouras');
-// $event1->setInterestArea('Costura');
-// print_r($event1);
-
-// // aceitando evento
-// $event_controller = new EventController();
-// $event_controller->registerEvent($event1);
-// $administrator->acceptEvent($event1);
-
-// // rejeitando evento
-// $event_controller = new EventController();
-// $event_controller->registerEvent($event1);
-// $administrator->rejectEvent($event1);
-
 
 // Criando um administrador
 $administrator = new Administrator(
@@ -83,8 +42,6 @@ $event->setInterestArea('Costura');
 // Criando um aluno
 $student = new BeneficiaryStudent(1, 'Maria Silva');
 
-// Adicione outros detalhes do aluno aqui
-
 // Criando uma inscrição com o aluno e o evento específicos
 $inscription = new Inscription($event, $student);
 print_r($inscription);
@@ -98,24 +55,18 @@ print_r($inscription);
 $administrator->rejectInscriptions($inscription);
 print_r($inscription);
 
-$eventData = [
-    'id' => 1,
-    'name' => 'Evento de Exemplo',
-];
-
+// Criando um evento pelo perfil do administrador
 $newEvent = new Event(10, 'Curso de informártica');
-$controller_evento = new EventController();
 $administrator->createEvent($newEvent);
 $administrator->eventList();// listaria se estivessem todos na mesma chamada
+$administrator->viewInscriptions(); //funcionaria se tivesse eventos instanciados e guardando em algum lugar
 
-$administrator->viewInscriptions(); //funcionaria se tivesse eventos instanciados
 
-
-// aceitando inscrição
+// Aceitando inscrição
 $inscription1 = new Inscription($event, $student);
 $administrator->acceptInscriptions($inscription1);
 print_r($inscription1);
 
-// rejeitando inscrição
+// Rejeitando inscrição
 $administrator->rejectInscriptions($inscription1);
 print_r($inscription1);
