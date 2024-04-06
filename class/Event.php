@@ -1,149 +1,157 @@
 <?php
 
-abstract class EventModality {
-    const PRESENTIAL = 'presential';
-    const HYBRID = 'hybrid';
-    const REMOTE = 'remote';
-}
-
-abstract class EventType {
-    const COURSE = 'course';
-    const WORKSHOP = 'workshop';
-    const LECTURE = 'lecture';
-}
-
-abstract class EventStatus {
-    const ACTIVE = 'active';
-    const INACTIVE = 'inactive';
-    const PENDING = 'pending';
-}
-
 class Event {
-    private $id;
-    private $name;
-    private $description;
-    private $date;
-    private $time;
-    private $location;
-    private $modality;
-    private $status;
-    private $type;
-    private $target_audience;
-    private $vacancies;
-    private $social_vacancies;
-    private $regular_vacancies;
-    private $material;
-    private $interest_area;    
+    private int | null $id;
+    private string | null  $name;
+    private string | null $description;
+    private string | null  $date;
+    private string | null  $time;
+    private string | null  $location;
+    private EventModality | null  $modality;
+    private EventStatus | null  $status;
+    private EventType | null $type;
+    private string | null  $target_audience;
+    private int | null  $vacancies;
+    private int | null  $social_vacancies;
+    private int | null  $regular_vacancies;
+    private string | null  $material;
+    private string | null  $interest_area;    
 
-    public function __construct(
-        $id = null, $name = null, $description = null, $date = null, $time = null, $location = null, $modality = null, 
-        $status = null, $type = null, $target_audience = null, $vacancies = null, $social_vacancies = null, 
-        $regular_vacancies = null, $material = null, $interest_area = null) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->date = $date;
-        $this->time = $time;
-        $this->location = $location;
-        $this->modality = $modality;
-        $this->status = $status;
-        $this->type = $type;
-        $this->target_audience = $target_audience;
-        $this->vacancies = $vacancies;
-        $this->social_vacancies = $social_vacancies;
-        $this->regular_vacancies = $regular_vacancies;
-        $this->material = $material;
-        $this->interest_area = $interest_area;
+    public function __construct(array $data_event = null) {
+        $this->setId($data_event['id']);
+        $this->setName($data_event['name']);
+        $this->setDescription($data_event['description']);
+        $this->setDate($data_event['date']);
+        $this->setTime($data_event['time']);
+        $this->setLocation($data_event['location']);
+        $this->setModality($data_event['modality']);
+        $this->setStatus($data_event['status']);
+        $this->setType($data_event['type']);
+        $this->setTargetAudience($data_event['target_audience']);
+        $this->setVacancies($data_event['vacancies']);
+        $this->setSocialVacancies($data_event['social_vacancies']);
+        $this->setRegularVacancies($data_event['regular_vacancies']);
+        $this->setMaterial($data_event['material']);
+        $this->setInterestArea($data_event['interest_area']);
     }
 
-    public function getId() {
+    public function getId(): int {
         return $this->id;
     }
-    public function getName() {
+
+    public function getName(): string  | null {
         return $this->name;
     }
-    public function getDescription() {
+
+    public function getDescription(): string  | null {
         return $this->description;
     }
-    public function getDate() {
+
+    public function getDate(): string  | null {
         return $this->date;
     }
-    public function getTime() {
+
+    public function getTime(): string  | null {
         return $this->time;
     }
-    public function getLocation() {
+
+    public function getLocation(): string  | null {
         return $this->location;
     }
-    public function getModality() {
+
+    public function getModality(): EventModality  | null {
         return $this->modality;
     }
-    public function getStatus() {
+
+    public function getStatus(): EventStatus  | null {
         return $this->status;
     }
-    public function getType() {
+
+    public function getType(): EventType  | null {
         return $this->type;
     }
-    public function getTargetAudience() {
+
+    public function getTargetAudience(): string  | null {
         return $this->target_audience;
     }
-    public function getVacancies() {
+
+    public function getVacancies(): int  | null {
         return $this->vacancies;
     }
-    public function getSocialVacancies() {
+
+    public function getSocialVacancies(): int  | null {
         return $this->social_vacancies;
     }
-    public function getRegularVacancies() {
+
+    public function getRegularVacancies(): int  | null {
         return $this->regular_vacancies;
     }
-    public function getMaterial() {
+
+    public function getMaterial(): string  | null {
         return $this->material;
     }
-    public function getInterestArea() {
+
+    public function getInterestArea(): string  | null {
         return $this->interest_area;
     }
-    public function setId($id) {
+
+    public function setId(int $id = null): void {
         $this->id = $id;
     }
-    public function setName($name) {
+
+    public function setName(string $name = null): void {
         $this->name = $name;
     }
-    public function setDescription($description) {
+
+    public function setDescription(string $description = null): void {
         $this->description = $description;
     }
-    public function setDate($date) {
+
+    public function setDate(string $date = null): void {
         $this->date = $date;
     }
-    public function setTime($time) {
+
+    public function setTime(string $time = null): void {
         $this->time = $time;
     }
-    public function setLocation($location) {
+
+    public function setLocation(string $location = null): void {
         $this->location = $location;
     }
-    public function setModality($modality) {
+
+    public function setModality(EventModality $modality = null): void {
         $this->modality = $modality;
     }
-    public function setStatus($status) {
+
+    public function setStatus(EventStatus $status = null): void {
         $this->status = $status;
     }
-    public function setType($type) {
+
+    public function setType(EventTYPE $type = null): void {
         $this->type = $type;
     }
-    public function setTargetAudience($target_audience) {
+
+    public function setTargetAudience(string $target_audience = null): void {
         $this->target_audience = $target_audience;
     }
-    public function setVacancies($vacancies) {
+
+    public function setVacancies(int $vacancies = null): void {
         $this->vacancies = $vacancies;
     }
-    public function setSocialVacancies($social_vacancies) {
+
+    public function setSocialVacancies(int $social_vacancies = null): void {
         $this->social_vacancies = $social_vacancies;
     }
-    public function setRegularVacancies($regular_vacancies) {
+
+    public function setRegularVacancies(int $regular_vacancies = null): void {
         $this->regular_vacancies = $regular_vacancies;
     }
-    public function setMaterial($material) {
+
+    public function setMaterial(string $material = null): void {
         $this->material = $material;
     }
-    public function setInterestArea($interest_area) {
+
+    public function setInterestArea(string $interest_area = null): void {
         $this->interest_area = $interest_area;
     }
 }
