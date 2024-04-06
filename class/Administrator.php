@@ -1,45 +1,40 @@
 <?php
 require_once "User.php";
+
 class Administrator extends User implements Interface_user
 {
-    private $id;
+    private int | null $id;
 
-    public function __construct($id = null, $name = null, $password = null, $date_of_birth = null, $cpf = null, $user_type = null, $image_term = null, $data_use_term = null, $email = null)
-    {
-        parent::__construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email);
-        $this->id = $id;
+    public function __construct(array $data_adm) {
+        parent::__construct($data_adm['id'], $data_adm['name'], $data_adm['password'], $data_adm['date_of_birth'], $data_adm['cpf'], $data_adm['user_type'], $data_adm['image_term'], $data_adm['data_use_term'], $data_adm['email']);
+        $this->id = $data_adm['id'];
     }
-    public function acceptEvent(Event $event)
-    {
-        $event->setStatus(EventStatus::ACTIVE);
+    public function acceptEvent(Event $event) : void{
+        $event->setStatus(EventStatus::Active);
 
         $events = new EventController();
         $events->editEvent($event->getId(), $event);
     }
 
-    public function rejectEvent(Event $event)
-    {
-        $event->setStatus(EventStatus::INACTIVE);
+    public function rejectEvent(Event $event) : void {
+        $event->setStatus(EventStatus::Inactive);
 
         $events = new EventController();
         $events->editEvent($event->getId(), $event);
     }
 
-    public function createEvent(Event $suggest_event)
-    {
+    public function createEvent(Event $suggest_event) : void {
         $events = new EventController();
         $events->registerEvent($suggest_event);
     }
-    public function editEvent(int $id, array $data)
-    {
-        $newEvent = new Event();
-        $newEvent->setName($data['name']);
+    public function editEvent(int $id, array $new_event_data) : void{
+        $newEvent = new Event($new_event_data);
+        // $newEvent->setName($data['name']);
 
         $events = new EventController();
         $events->editEvent($id, $newEvent);
     }
-    public function eventList()
-    {
+    public function eventList(): void{
         $event = new EventController();
         $event->listEvents();
     }
@@ -58,17 +53,14 @@ class Administrator extends User implements Interface_user
     // {
     //     //GERAÇÃO DE RELATÓRIO
     // }
-    public function viewInscriptions()
-    {
+    public function viewInscriptions() : void {
         $inscription = new InscriptionController();
         $inscription->viewInscriptions();
     }
-    public function acceptInscriptions(Inscription $inscription)
-    {
-        $inscription->setStatus(EventStatus::ACTIVE);
+    public function acceptInscriptions(Inscription $inscription) : void {
+        $inscription->setStatus(EventStatus::Active);
     }
-    public function rejectInscriptions(Inscription $inscription)
-    {
-        $inscription->setStatus(EventStatus::INACTIVE);
+    public function rejectInscriptions(Inscription $inscription) : void {
+        $inscription->setStatus(EventStatus::Inactive);
     }
 }

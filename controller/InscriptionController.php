@@ -8,7 +8,7 @@ class InscriptionController
         $this->inscription = [];
     }
 
-    public function registerInscription(Inscription $inscription) {
+    public function registerInscription(Inscription $inscription) : void {
         $this->inscription[] = $inscription;
     }
     public function cancelInscription(BeneficiaryStudent $student, Event $event) : bool{
