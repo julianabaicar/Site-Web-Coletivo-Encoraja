@@ -6,6 +6,10 @@ require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
 require_once("../class/BeneficiaryStudent.php");
 
+require_once("../enum/EventModality.php");
+require_once("../enum/EventStatus.php");
+require_once("../enum/EventType.php");
+
 // Criando novo evento
 $event1 = new Event();
 $event1->setId(3);
@@ -14,9 +18,9 @@ $event1->setDescription('Curso para aprender a costurar');
 $event1->setDate('07/09/2002');
 $event1->setTime('10:30:00');
 $event1->setLocation('Passeio Publico');
-$event1->setModality(EventModality::PRESENTIAL);
-$event1->setStatus(EventStatus::ACTIVE);
-$event1->setType(EventType::COURSE);
+$event1->setModality(EventModality::Presential);
+$event1->setStatus(EventStatus::Active);
+$event1->setType(EventType::Course);
 $event1->setTargetAudience('Mulheres');
 $event1->setVacancies(15);
 $event1->setSocialVacancies(4);

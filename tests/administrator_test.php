@@ -7,6 +7,11 @@ require_once("../class/Inscription.php");
 require_once("../controller/InscriptionController.php");
 require_once("../class/BeneficiaryStudent.php");
 
+//Enum
+require_once("../enum/EventModality.php");
+require_once("../enum/EventStatus.php");
+require_once("../enum/EventType.php");
+
 
 // Criando um administrador
 $administrator = new Administrator(
@@ -29,9 +34,9 @@ $event->setDescription('Curso para aprender a costurar');
 $event->setDate('2024-03-31');
 $event->setTime('10:30:00');
 $event->setLocation('Passeio Publico');
-$event->setModality(EventModality::PRESENTIAL);
-$event->setStatus(EventStatus::PENDING);
-$event->setType(EventType::COURSE);
+$event->setModality(EventModality::Presential);
+$event->setStatus(EventStatus::Pending);
+$event->setType(EventType::Course);
 $event->setTargetAudience('Mulheres');
 $event->setVacancies(15);
 $event->setSocialVacancies(4);

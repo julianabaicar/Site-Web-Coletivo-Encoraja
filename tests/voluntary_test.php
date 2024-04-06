@@ -2,6 +2,10 @@
 require_once("../class/Event.php");
 require_once("../controller/EventController.php");
 require_once("../class/Voluntary.php");
+//enum
+require_once("../enum/EventModality.php");
+require_once("../enum/EventStatus.php");
+require_once("../enum/EventType.php");
 
 //Cenario: Criar usuário
 
