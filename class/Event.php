@@ -17,7 +17,7 @@ class Event {
     private string | null  $material;
     private string | null  $interest_area;    
 
-    public function __construct(array $data_event = null) {
+    public function __construct(array $data_event) {
         $this->setId($data_event['id']);
         $this->setName($data_event['name']);
         $this->setDescription($data_event['description']);

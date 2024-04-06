@@ -11,22 +11,24 @@ require_once("../enum/EventStatus.php");
 require_once("../enum/EventType.php");
 
 // Criando novo evento
-$event1 = new Event();
-$event1->setId(3);
-$event1->setName('Curso de Costura');
-$event1->setDescription('Curso para aprender a costurar');
-$event1->setDate('07/09/2002');
-$event1->setTime('10:30:00');
-$event1->setLocation('Passeio Publico');
-$event1->setModality(EventModality::Presential);
-$event1->setStatus(EventStatus::Active);
-$event1->setType(EventType::Course);
-$event1->setTargetAudience('Mulheres');
-$event1->setVacancies(15);
-$event1->setSocialVacancies(4);
-$event1->setRegularVacancies(11);
-$event1->setMaterial('Tesouras');
-$event1->setInterestArea('Costura');
+$data_event1 = array(
+    'id' => 1,
+    'name' => 'Curso de costura',
+    'description' => 'Curso para aprender a costurar',
+    'date' => '2024-04-05',
+    'time' => '10:00',
+    'location' => 'Passeio público',
+    'modality' => EventModality::Presential,
+    'status' => EventStatus::Active,
+    'type' => EventType::Workshop,
+    'target_audience' => 'Mulheres',
+    'vacancies' => 100,
+    'social_vacancies' => 20,
+    'regular_vacancies' => 80,
+    'material' => 'Tesoura e agulha',
+    'interest_area' => 'Costura e bordado'
+);
+$event1 = new Event($data_event1);
 
 
 // Criando alunos
@@ -57,7 +59,7 @@ $student2 = new BeneficiaryStudent(
 
 // Testantando a criação de inscrição
 $inscription1 = new Inscription($event1, $student1);
-$inscription1->setStatus("Ativa");
+$inscription1->setStatus(EventStatus::Active);
 $inscription1->setProof("Prova de inscrição 1");
 print_r($inscription1);
 
@@ -67,6 +69,8 @@ echo '-------------------------------------------'.PHP_EOL;
 $inscriptionController = new InscriptionController();
 $inscriptionController->registerInscription($inscription1);
 print_r($inscriptionController);
+
+
 
 // Testando o cancelamento de uma inscrição
 $cancelado = $inscriptionController->cancelInscription($student1, $event1);
@@ -81,15 +85,17 @@ if ($cancelado) {
 $inscription2 = new Inscription($event1, $student2);
 $inscriptionController->registerInscription($inscription2);
 
+
+
 //Filtrando pelo evento desejado e mostrando
 $inscricoesEvento1 = $inscriptionController->listInscription($event1);
 echo "Inscrições para o Evento 2:\n";
 foreach ($inscricoesEvento1 as $inscricao) {
-    echo "- Aluno: " . $inscricao->getStudent()->getName() . ", Status: " . $inscricao->getStatus() . "\n";
+    print_r($inscricao);
 }
+print_r($inscriptionController->findInscriptionsByStudentId(3));
 
-print_r($inscriptionController->findInscriptionsByStudentId(50));
 
 // Testando a visualização de todas as inscrições
 echo "Todas as inscrições:\n";
-echo $inscriptionController->viewInscriptions();
+print_r($inscriptionController->viewInscriptions());

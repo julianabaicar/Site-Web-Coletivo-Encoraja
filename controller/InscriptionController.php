@@ -2,19 +2,16 @@
 
 class InscriptionController
 {
-    private $inscription = [];
+    private array $inscription = [];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->inscription = [];
     }
 
-    public function registerInscription(Inscription $inscription)
-    {
+    public function registerInscription(Inscription $inscription) {
         $this->inscription[] = $inscription;
     }
-    public function cancelInscription($student, $event)
-    {
+    public function cancelInscription(BeneficiaryStudent $student, Event $event) : bool{
         foreach ($this->inscription as $key => $inscription) {
             if ($inscription->getStudent() === $student && $inscription->getEvent() === $event) {
                 unset($this->inscriptions[$key]);
@@ -23,8 +20,7 @@ class InscriptionController
         }
         return false;
     }
-    public function listInscription($event)
-    {
+    public function listInscription(Event $event) : array {
         $matchingInscriptions = [];
 
         foreach ($this->inscription as $inscription) {
@@ -35,8 +31,7 @@ class InscriptionController
         return $matchingInscriptions;
     }
 
-    public function viewInscriptions()
-    {
+    public function viewInscriptions() : string {
         if (empty($this->inscription)) {
             return "Não há inscrições registradas.";
         }
@@ -44,16 +39,11 @@ class InscriptionController
         $inscriptionDetails = "";
 
         foreach ($this->inscription as $inscription) {
-            $student = $inscription->getStudent();
-            $event = $inscription->getEvent();
-            $status = $inscription->getStatus();
-
-            $inscriptionDetails .= "Aluno: " . $student->getName() . ", Evento: " . $event->getName() . ", Status: " . $status . "\n";
+            print_r($inscription);
         }
         return $inscriptionDetails;
     }
-    public function findInscriptionsByStudentId($studentId)
-    {
+    public function findInscriptionsByStudentId(int $studentId) : array {
         $matchingInscriptions = [];
 
         foreach ($this->inscription as $inscription) {
