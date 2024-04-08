@@ -18,22 +18,24 @@ if($voluntario){
     echo  'Erro ao tentar criar usuário' .PHP_EOL;
 }
 
-$event2 = new Event();
-$event2->setId(2);
-$event2->setName('Workshop de Pintura');
-$event2->setDescription('Workshop para aprender técnicas de pintura');
-$event2->setDate('10/09/2002');
-$event2->setTime('14:00:00');
-$event2->setLocation('Museu de Arte Moderna');
-$event2->setModality(EventModality::PRESENTIAL);
-$event2->setStatus(EventStatus::PENDING);
-$event2->setType(EventType::WORKSHOP);
-$event2->setTargetAudience('Artistas iniciantes');
-$event2->setVacancies(20);
-$event2->setSocialVacancies(5);
-$event2->setRegularVacancies(15);
-$event2->setMaterial('Tintas e pincéis');
-$event2->setInterestArea('Artes Plásticas');
+$data_event1 = array(
+    'id' => 1,
+    'name' => 'Curso de costura',
+    'description' => 'Curso para aprender a costurar',
+    'date' => '2024-04-05',
+    'time' => '10:00',
+    'location' => 'Passeio público',
+    'modality' => EventModality::Presential,
+    'status' => EventStatus::Active,
+    'type' => EventType::Workshop,
+    'target_audience' => 'Mulheres',
+    'vacancies' => 100,
+    'social_vacancies' => 20,
+    'regular_vacancies' => 80,
+    'material' => 'Tesoura e agulha',
+    'interest_area' => 'Costura e bordado'
+);
+$event1 = new Event($data_event1);
 
 //Cenario: Sugerir evento
-$voluntario->suggestEvent($event2);
+$voluntario->suggestEvent($event1);

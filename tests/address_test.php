@@ -11,16 +11,16 @@ $endereco = new Address();
 $endereco->registerAddress(number: 133, zip_code: 123456, street: "Eva Pereira Correia", city: "Curitiba", neighborhoods: "sitio cercado");
 
 $endereco->changeAddress(number: 144, zip_code: 123456, street: "Eva Pereira Correia", city: "Curitiba", neighborhoods: "sitio cercado");
-print_r($endereco);
-//if($endereco){
-//    print_r($endereco);
-//    echo 'Sucesso! Teste Cenario 01' .PHP_EOL;
-//} else {
-//    echo  'Erro: teste Cenario 01' .PHP_EOL;
-//}
 
-////Cenario 02: Editar endereço
-//$endereco[0]->changeAddress("Rua Derosso", 133, "Boqueirão", "Curitiba", 81910045, $voluntario[0]);
-//print_r($endereco[0]);
-//
-//echo 'Endereço alterado com sucesso';
+if($endereco){
+    print_r($endereco);
+    echo 'Sucesso! Teste Cenario 01' .PHP_EOL;
+} else {
+    echo  'Erro: teste Cenario 01' .PHP_EOL;
+}
+
+//Cenario 02: Editar endereço
+$endereco->changeAddress(number: 144, zip_code: 123456, street: "Eva Pereira Correia", city: "Curitiba", neighborhoods: "sitio cercado");
+print_r($endereco);
+
+echo 'Endereço alterado com sucesso';
