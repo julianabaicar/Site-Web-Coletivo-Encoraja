@@ -6,7 +6,7 @@ class Administrator extends User implements Interface_user
     private int | null $id;
 
     public function __construct(array $data_adm) {
-        parent::__construct($data_adm['id'], $data_adm['name'], $data_adm['password'], $data_adm['date_of_birth'], $data_adm['cpf'], $data_adm['user_type'], $data_adm['image_term'], $data_adm['data_use_term'], $data_adm['email']);
+        parent::__construct($data_adm['id'], $data_adm['name'], $data_adm['password'], $data_adm['cpf'], $data_adm['user_type'], $data_adm['email']);
         $this->id = $data_adm['id'];
     }
     public function acceptEvent(Event $event) : void{

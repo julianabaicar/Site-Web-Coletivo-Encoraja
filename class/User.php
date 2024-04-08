@@ -5,33 +5,30 @@ require_once("../interface/UserInterface.php");
 class User implements Interface_user
 {
     private int $id;
-    private $name;
-    private $email;
-    private  $date_of_birth;
-    private $cpf;
-    private $password;
-    private $user_type;
-    private $image_term;
-    private $data_use_term;
-    //nao tem endereco alterar isso no diagrama
+    private string $name;
+    private string $email;
+    private string $date_of_birth;
+    private string $cpf;
+    private string $password;
+    private string $user_type;
+    private bool $image_term;
+    private bool $data_use_term;
+    private Address $address;
 
     //add uma classe com um array como o exemplo da aula
-    public function __construct($id=null, $name=null, $password=null, $date_of_birth=null, $cpf=null, $user_type=null, $image_term=null, $data_use_term=null, $email=null)
+    public function __construct(int $id = null, string $name = null, string $email = null, string $cpf = null, string $password = null, string $user_type = null)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->password = $password;
-        $this->date_of_birth = $date_of_birth;
-        $this->cpf = $cpf;
-        $this->user_type = $user_type;
-        $this->image_term = $image_term;
-        $this->data_use_term = $data_use_term;
         $this->email = $email;
+        $this->cpf = $cpf;
+        $this->password = $password;
+        $this->user_type = $user_type;
     }
 
-    public function registerUser(){}
+    public function registerUser() : void {}
 
-    public function eventList(){}
+    public function eventList() : void {}
 
     public function getId(): int | null
     {
@@ -77,6 +74,10 @@ class User implements Interface_user
     {
         return $this->data_use_term;
     }
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
 
     public function setId(int $id): void
     {
@@ -121,5 +122,10 @@ class User implements Interface_user
     public function setDataUseTerm(bool $data_use_term): void
     {
         $this->data_use_term = $data_use_term;
+    }
+
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
     }
 }

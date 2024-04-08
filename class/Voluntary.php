@@ -9,9 +9,9 @@ class Voluntary extends User implements Interface_user
     private string $how_did_know;
     private string $expectations;
 
-    public function __construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email, string $availability, string $course_experience, string $how_did_know, string $expectations)
+    public function __construct($id, $name, $password, $cpf, $user_type, $email, string $availability, string $course_experience, string $how_did_know, string $expectations)
     {
-        parent::__construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email);
+        parent::__construct($id, $name, $password, $cpf, $user_type, $email);
         $this->availability = $availability;
         $this->course_experience = $course_experience;
         $this->how_did_know = $how_did_know;
