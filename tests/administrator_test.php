@@ -49,7 +49,16 @@ $data_event1 = array(
 $event = new Event($data_event1);
 
 // Criando um aluno
-$student = new BeneficiaryStudent(1, 'Maria Silva');
+$student = array 
+(
+    'id'=> '1',
+    'name'=> 'student1',
+    'email'=>'student1@gmail.com',
+    'password'=>'studentpassword1',
+    'cpf'=> '125435315',
+    'user_type'=> 'BeneficiaryStudent'
+);  
+$student = new BeneficiaryStudent($student); 
 
 // Criando uma inscrição com o aluno e o evento específicos
 $inscription = new Inscription($event, $student);

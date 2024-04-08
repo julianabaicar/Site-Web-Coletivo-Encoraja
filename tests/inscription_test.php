@@ -32,30 +32,25 @@ $event1 = new Event($data_event1);
 
 
 // Criando alunos
-$student1 = new BeneficiaryStudent(
-    1, 
-    "João",
-    "senha123", 
-    "1990-05-15", 
-    "123.456.789-00", 
-    "beneficiário", 
-    true,
-    true,
-    "joao@example.com",
-    true
-);
-$student2 = new BeneficiaryStudent(
-    3, 
-    "Maria",
-    "senha123", 
-    "1990-05-15", 
-    "123.456.789-00", 
-    "beneficiário", 
-    true,
-    true,
-    "joao@example.com",
-    true
-);
+$student1 = array (
+    'id'=> '1',
+    'name'=> 'student1',
+    'email'=>'student1@gmail.com',
+    'password'=>'studentpassword1',
+    'cpf'=> '125435315',
+    'user_type'=> 'BeneficiaryStudent'
+);  
+$student1 = new BeneficiaryStudent($student1); 
+
+$student2 = array(
+    'id'=> '1',
+    'name'=> 'student1',
+    'email'=>'student1@gmail.com',
+    'password'=>'studentpassword1',
+    'cpf'=> '125435315',
+    'user_type'=> 'BeneficiaryStudent'
+);  
+$student2 = new BeneficiaryStudent($student2); 
 
 // Testantando a criação de inscrição
 $inscription1 = new Inscription($event1, $student1);
