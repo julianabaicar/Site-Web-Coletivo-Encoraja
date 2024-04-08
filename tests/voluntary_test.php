@@ -9,7 +9,7 @@ require_once("../enum/EventType.php");
 
 //Cenario: Criar usuário
 
-$voluntario = new Voluntary(123456789, "Andre", 123456, "1990-01-01", 123456, "Voluntario", true, true, true, 'Finais de semana', 'Bastante', 'Amigos', 'altas');
+$voluntario = new Voluntary(id: 123456789, name: "Andre", password: 123456, date_of_birth: "1990-01-01", cpf: 123456, user_type: "Voluntario", image_term: true, data_use_term: true, email:true, availability: 'Finais de semana', course_experience: 'Bastante', how_did_know: 'Amigos',expectations:  'altas');
 
 if($voluntario){
     print_r($voluntario);

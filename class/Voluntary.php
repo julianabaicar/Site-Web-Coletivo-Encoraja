@@ -4,7 +4,10 @@ require_once "User.php";
 class Voluntary extends User implements Interface_user
 {
     private int $id;
-    private string $availability, $course_experience, $how_did_know, $expectations;
+    private string $availability;
+    private string $course_experience;
+    private string $how_did_know;
+    private string $expectations;
 
     public function __construct($id, $name, $password, $date_of_birth, $cpf, $user_type, $image_term, $data_use_term, $email, string $availability, string $course_experience, string $how_did_know, string $expectations)
     {

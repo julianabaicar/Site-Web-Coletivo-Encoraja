@@ -1,30 +1,29 @@
 <?php
-require_once 'users.php';
+require_once 'User.php';
 class Address{
-    private int $number, $zip_code;
-    private string $street, $city,$neighborhoods;
-    private User $user;
+    private int $number;
+    private int $zip_code;
+    private string $street;
+    private string $city;
+    private string $neighborhoods;
 
-    public function registerAddress(string $street, int $number, string $neighborhoods, string $city, int $zip_code, User $user)
+    public function registerAddress(int $number, int $zip_code, string $street, string $city, string $neighborhoods)
     {
-        $this->street = $street;
         $this->number = $number;
-        $this->neighborhoods = $neighborhoods;
-        $this->city = $city;
         $this->zip_code = $zip_code;
-        $this->user = $user;
+        $this->street = $street;
+        $this->city = $city;
+        $this->neighborhoods = $neighborhoods;
     }
 
-    public function changeAddress(string $street, int $number, string $neighborhoods, string $city, int $zip_code, User $user)
+    public function changeAddress(int $number, int $zip_code, string $street, string $city, string $neighborhoods)
     {
-        $this->street = $street;
         $this->number = $number;
-        $this->neighborhoods = $neighborhoods;
-        $this->city = $city;
         $this->zip_code = $zip_code;
-        $this->user = $user;
+        $this->street = $street;
+        $this->city = $city;
+        $this->neighborhoods = $neighborhoods;
     }
-
     public function getNumber(): int
     {
         return $this->number;
