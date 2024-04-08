@@ -1,6 +1,7 @@
 <?php
 require_once 'User.php';
 class Address{
+
     private int $number;
     private int $zip_code;
     private string $street;

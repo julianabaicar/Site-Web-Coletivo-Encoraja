@@ -9,13 +9,9 @@ class Voluntary extends User implements Interface_user
     private string $how_did_know;
     private string $expectations;
 
-    public function __construct($id, $name, $password, $cpf, $user_type, $email, string $availability, string $course_experience, string $how_did_know, string $expectations)
-    {
-        parent::__construct($id, $name, $password, $cpf, $user_type, $email);
-        $this->availability = $availability;
-        $this->course_experience = $course_experience;
-        $this->how_did_know = $how_did_know;
-        $this->expectations = $expectations;
+    public function __construct(array $data_adm) {
+        parent::__construct($data_adm['id'], $data_adm['name'], $data_adm['password'], $data_adm['cpf'], $data_adm['user_type'], $data_adm['email']);
+        $this->id = $data_adm['id'];
     }
 
 
@@ -69,4 +65,16 @@ class Voluntary extends User implements Interface_user
     {
         $this->expectations = $expectations;
     }
+
+    public function getAddress(): Address
+    {
+        return $this->address;
+    }
+
+    public function setAddress(Address $address): void
+    {
+        $this->address = $address;
+    }
+
+
 }

@@ -14,8 +14,8 @@ require_once("../enum/EventType.php");
 
 
 // Criando um administrador
-$administrator = array(
-    'id' => 1,
+    $administrator = array(
+        'id' => 1,
     'name' => 'John Doe',
     'password' => 'password123',
     'date_of_birth' => '1990-01-01',
