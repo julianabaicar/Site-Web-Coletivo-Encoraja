@@ -41,7 +41,7 @@
         <div class="col-md-4">
             <label for="type" class="form-label">Tipo</label>
             <select id="type" name="type" class="form-select">
-                <option value="Couse">Curso</option>
+                <option value="Course">Curso</option>
                 <option value="Workshop">Oficina</option>
                 <option value="Lecture">Palestra</option>
             </select>

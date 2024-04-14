@@ -10,13 +10,14 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $events = Event::all();
         // $data = $request->user()->id(); pegando informações do usuario logado
         // echo '<pre>';
         // die(print_r($data));
-        return view('events.index',['events'=>$events]);
+        return view('events.index', ['events' => $events]);
+
     }
 
     /**
@@ -24,7 +25,6 @@ class EventController extends Controller
      */
     public function create()
     {
-        // die(print_r($_SESSION));
         return view('events.create');
     }
 
@@ -33,7 +33,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        die(print_r($request->all()));
+        // die(print_r($request->all()));
         if(Event::query()->create($request->all())) {
             return response()->redirectTo('/events');
         }
