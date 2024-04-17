@@ -16,9 +16,9 @@ class Event extends Model
     public function inscriptions(){
         return $this->hasMany('App\Models\Inscription');
     }
-    public function address(){
-        return $this->hasOne('App\Models\Address');
-    }
+    // public function address(){
+    //     return $this->hasOne('App\Models\Address');
+    // }
     public function reviews(){
         return $this->hasMany('App\Models\Reviews');
     }

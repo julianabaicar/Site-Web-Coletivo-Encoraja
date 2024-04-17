@@ -50,9 +50,9 @@ class User extends Authenticatable
     public function inscriptions(){
         return $this->hasMany('App\Models\Inscription');
     }
-    public function address(){
-        return $this->hasMany('App\Models\Address');
-    }
+    // public function address(){
+    //     return $this->hasMany('App\Models\Address');
+    // }
     public function reviews(){
         return $this->hasMany('App\Models\Reviews');
     }
