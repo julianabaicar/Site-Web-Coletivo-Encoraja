@@ -44,4 +44,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function permissios(){
+        return $this->hasMany('App\Models\Permission');
+    }
+    public function inscriptions(){
+        return $this->hasMany('App\Models\Inscription');
+    }
+    public function address(){
+        return $this->hasMany('App\Models\Address');
+    }
+    public function reviews(){
+        return $this->hasMany('App\Models\Reviews');
+    }
+    public function relates_events(){
+        return $this->hasMany('App\Models\RelatesEvent');
+    }
 }

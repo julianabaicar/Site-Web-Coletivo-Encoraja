@@ -27,7 +27,10 @@ return new class extends Migration
             $table->string('material', 255);
             $table->string('interest_area', 255);
             $table->float('price')->default(0)->nullable(true);
-            // $table->foreignIdFor('IDAdress');
+            //$table->foreignId('address_id')->constrained('address')->onUpdate('cascade')->onDelete('cascade')->nullable(true);
+            
+            //$table->foreignId('address_id')->constrained('address');
+
             $table->timestamps();
         });
     }
