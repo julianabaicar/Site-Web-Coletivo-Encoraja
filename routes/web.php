@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,13 @@ Route::middleware('auth')->group(function () {
 //Rotas de adm
 Route::middleware('auth')->group(function () {
     Route::resource('/events', EventController::class);
+    Route::resource('/adm', AdministratorController::class);
 });
+
+Route::resource('/events', EventController::class);
+Route::resource('/adm', AdministratorController::class);
+
+// Route::get('/adm', [AdministratorController::class, 'teste'])->middleware('auth')->name('adm.teste');
 
 require __DIR__.'/auth.php';
 

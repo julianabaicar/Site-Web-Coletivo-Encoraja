@@ -9,20 +9,33 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'date', 'time', 'modality', 'status', 
-                        'type', 'target_audience', 'vacancies', 'social_vacancies', 'regular_vacancies',
-                        'material', 'interest_area', 'price'];
+    protected $fillable = [
+        'name', 
+        'description', 
+        'date', 
+        'time', 
+        'modality', 
+        'status',           
+        'type', 
+        'target_audience', 
+        'vacancies', 
+        'social_vacancies', 
+        'regular_vacancies',    
+        'material', 
+        'interest_area', 
+        'price'
+    ];
 
     public function inscriptions(){
-        return $this->hasMany('App\Models\Inscription');
+        return $this->hasMany(Inscription::class);
     }
-    // public function address(){
-    //     return $this->hasOne('App\Models\Address');
-    // }
+    public function address(){
+        return $this->hasOne(Address::class);
+    }
     public function reviews(){
-        return $this->hasMany('App\Models\Reviews');
+        return $this->hasMany(Reviews::class);
     }
     public function relates_events(){
-        return $this->hasMany('App\Models\RelatesEvent');
+        return $this->hasMany(RelatesEvent::class);
     }
 }

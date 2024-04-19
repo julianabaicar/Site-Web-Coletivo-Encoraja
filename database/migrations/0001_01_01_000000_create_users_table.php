@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('course_experience', 255)->nullable();
             $table->string('how_know', 255)->nullable();
             $table->string('expectations', 255)->nullable();
-            //$table->foreignId('address_id')->constrained('address')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->foreignId('address_id')->constrained('address')->onUpdate('cascade')->onDelete('cascade')->nullable();
 
             $table->rememberToken();
             $table->timestamps();

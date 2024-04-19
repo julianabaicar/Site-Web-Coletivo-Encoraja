@@ -20,6 +20,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cpf',
+        'date_birthday',
+        'image_term',
+        'data_term',
+        'beneficiary',
+        'availability',
+        'course_experience',
+        'how_know',
+        'expectations'
     ];
 
     /**
@@ -44,19 +53,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function permissios(){
-        return $this->hasMany('App\Models\Permission');
+    public function permissions(){
+        return $this->hasMany(Permission::class);
     }
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
+
     public function inscriptions(){
-        return $this->hasMany('App\Models\Inscription');
+        return $this->hasMany(Inscription::class);
     }
-    // public function address(){
-    //     return $this->hasMany('App\Models\Address');
-    // }
     public function reviews(){
-        return $this->hasMany('App\Models\Reviews');
+        return $this->hasMany(Reviews::class);
     }
     public function relates_events(){
-        return $this->hasMany('App\Models\RelatesEvent');
+        return $this->hasMany(RelatesEvent::class);
     }
 }

@@ -9,10 +9,14 @@ class Inscription extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'proof'
+    ];
+
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
     public function event(){
-        return $this->belongsTo('App\Models\Event');
+        return $this->belongsTo(Event::class);
     }
 }
