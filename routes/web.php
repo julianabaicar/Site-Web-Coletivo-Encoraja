@@ -32,5 +32,3 @@ Route::resource('/adm', AdministratorController::class);
 // Route::get('/adm', [AdministratorController::class, 'teste'])->middleware('auth')->name('adm.teste');
 
 require __DIR__.'/auth.php';
-
-

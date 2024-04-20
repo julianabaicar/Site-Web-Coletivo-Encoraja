@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\Administrator;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -27,11 +29,27 @@ class AdministratorController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        if(User::query()->create($request->all())) {
-            return response()->redirectTo('/adm');
-        }
+    {  // Valide os dados do formulário
+
+        $adm = User::create([
+            'name' => $request->input('name'),
+            'email' =>  $request->input('email'),
+            'date_birthday' =>  $request->input('date_birthday'),
+            'cpf' =>  $request->input('cpf'),
+            'password' =>  $request->input('password'),
+        ]);
+
+        $adm->addresses()->create([
+            'street' =>  $request->input('street'),
+            'number' =>  $request->input('number'),
+            'neighbourhood' =>  $request->input('neighbourhood'),
+            'city' => $request->input('city'),
+            'zip_code' => $request->input('zip_code')
+        ]);
+       
+        return redirect('/adm');
     }
+
 
     /**
      * Display the specified resource.
