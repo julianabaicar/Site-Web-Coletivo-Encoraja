@@ -96,9 +96,8 @@ class AdministratorController extends Controller
         $user->delete();
         return response()->redirectTo('/adm');
     }
-
-    public function teste(){
-        $events = Event::all();
-        return view('events.index', ['events' => $events]);
-    }
+    // public function event(){
+    //     $events = Event::all();
+    //     return view('events.index', ['events' => $events]);
+    // }
 }

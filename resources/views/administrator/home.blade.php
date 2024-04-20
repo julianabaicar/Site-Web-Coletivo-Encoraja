@@ -12,7 +12,7 @@
 <br><br><br>
 <a href="/adm">Visualisar todos os usuários</a>
 <br><br><br>
-<a href="/adm/teste">Opções de Eventos</a>
+<a href="/events">Opções de Eventos</a>
 <br><br><br>
 <a href="">Opções de inscrições</a>
 

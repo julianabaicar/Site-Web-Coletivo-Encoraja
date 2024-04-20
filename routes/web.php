@@ -32,7 +32,7 @@ Route::resource('/events', EventController::class);
 
 //adm
 Route::get('/adm/home', [AdministratorController::class, 'home'])->name('adm.home');
-Route::get('/adm/teste', [AdministratorController::class, 'teste'])->name('adm.teste');
+// Route::get('/adm/event', [AdministratorController::class, 'event'])->name('adm.event');
 Route::resource('/adm', AdministratorController::class);
 
 
