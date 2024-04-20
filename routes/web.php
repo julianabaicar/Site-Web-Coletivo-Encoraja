@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,13 +28,19 @@ use Illuminate\Support\Facades\Route;
 //     Route::resource('/adm', AdministratorController::class);
 // });
 
+Route::get('/home-admin', [HomeController::class, 'home_admin']);
 Route::resource('/', HomeController::class);
+
 Route::resource('/events', EventController::class);
 
-//adm
-Route::get('/adm/home', [AdministratorController::class, 'home'])->name('adm.home');
-// Route::get('/adm/event', [AdministratorController::class, 'event'])->name('adm.event');
 Route::resource('/adm', AdministratorController::class);
+
+Route::resource('/inscriptions', InscriptionController::class);
+
+//adm
+
+// Route::get('/adm/event', [AdministratorController::class, 'event'])->name('adm.event');
+
 
 
 
