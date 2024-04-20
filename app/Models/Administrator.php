@@ -20,5 +20,4 @@ class Administrator extends Model
         'image_term',
         'data_term'
     ];
-
 }
