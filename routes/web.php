@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\BeneficiaryStudentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InscriptionController;
@@ -41,7 +42,14 @@ Route::resource('/inscriptions', InscriptionController::class);
 
 // Route::get('/adm/event', [AdministratorController::class, 'event'])->name('adm.event');
 
+Route::get('/home-beneficiary', [HomeController::class, 'home_beneficiary']);
+Route::resource('/', HomeController::class);
 
+Route::resource('/events', EventController::class);
+
+Route::resource('/beneficiary', AdministratorController::class);
+
+Route::resource('/inscriptions', InscriptionController::class);
 
 
 
